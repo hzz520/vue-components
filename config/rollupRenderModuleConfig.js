@@ -9,6 +9,7 @@ const { terser } = require('rollup-plugin-terser')
 
 const createModuleConfig = (cModuleMap, external, isDev, dest = 'es') => ({
   input: {
+    index: './src/index.js',
     ...cModuleMap
   },
   output: {
