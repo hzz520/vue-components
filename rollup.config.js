@@ -1,7 +1,9 @@
 const babel = require('rollup-plugin-babel')
 const Resolve = require('rollup-plugin-node-resolve')
 const postcss = require('rollup-plugin-postcss')
-const autoprefixer = require('autoprefixer')
+// const autoprefixer = require('autoprefixer')
+const cssnext = require('postcss-cssnext')
+const px2vw = require('postcss-px-to-viewport')
 const cssnano = require('cssnano')
 const commonjs = require('rollup-plugin-commonjs')
 const vuePlugin = require('rollup-plugin-vue')
@@ -84,7 +86,21 @@ const config = {
     postcss({
       include: resolve(__dirname, './src/**'),
       extensions: ['.less', '.css'],
-      plugins: [autoprefixer, cssnano],
+      plugins: [
+        cssnext({
+          preset: 'advanced'
+        }),
+        px2vw({
+          viewportWidth: 750,
+          viewportHeight: 1334,
+          unitPrecision: 3,
+          viewportUnit: 'vw',
+          selectorBlackList: ['.ignore', '.hairlines'],
+          minPixelValue: 1,
+          mediaQuery: false
+        }), 
+        cssnano
+      ],
       extract: true
     //   sourceMap: 'file.map'
     }),

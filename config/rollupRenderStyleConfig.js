@@ -1,7 +1,8 @@
 const postcss = require('rollup-plugin-postcss')
 const clear = require('rollup-plugin-clear')
-const autoprefixer = require('autoprefixer')
+// const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
+const cssnext = require('postcss-cssnext')
 const basePlugin = require('./rollupBasePluginConfig')
 
 const createStyleConfig = (moduleName, external, dest) => ({
@@ -23,7 +24,12 @@ const createStyleConfig = (moduleName, external, dest) => ({
           javascriptEnabled: true
         }]
       ],
-      plugins: [autoprefixer, cssnano],
+      plugins: [
+        cssnext({
+          preset: 'advanced'
+        }), 
+        cssnano
+      ],
       minimize: true,
       // 样式输出到 createModuleConfig 创建的模块文件夹下
       extract: `${dest}/${moduleName}/style/index.css` 

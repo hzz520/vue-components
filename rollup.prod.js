@@ -66,5 +66,5 @@ export default {
       extract: 'dist/index.css'
     })
   ],
-  external: id => external.some(e => id.indexOf(e) === 0),
+  external: external,
 }
