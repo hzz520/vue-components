@@ -1,4 +1,5 @@
 import './main.less'
+
 export default {
     data () {
         return {
@@ -10,7 +11,7 @@ export default {
     },
     methods: {
         handleclick (e) {
-            console.log(e)
+            this.$toast.info('66666')
         }
     }
 }

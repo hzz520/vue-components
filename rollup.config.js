@@ -88,7 +88,7 @@ const config = {
   ],
   watch: {
     chokidar: true,
-    include: [`src/components/${name}/**/*`, `src/components/${name}/**/*.less`],
+    include: [`src/**`],
     exclude: 'node_modules/**',
     clearScreen: false
   }

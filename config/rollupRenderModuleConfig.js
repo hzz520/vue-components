@@ -5,6 +5,8 @@ const postcss = require('rollup-plugin-postcss')
 // const eslint = require('rollup-plugin-eslint')
 const clear = require('rollup-plugin-clear')
 const basePlugin = require('./rollupBasePluginConfig')
+const autoprefixer = require('autoprefixer')
+const cssnano = require('cssnano')
 const { terser } = require('rollup-plugin-terser')
 
 const createModuleConfig = (cModuleMap, external, isDev, dest = 'es') => ({
@@ -34,8 +36,10 @@ const createModuleConfig = (cModuleMap, external, isDev, dest = 'es') => ({
           javascriptEnabled: true
         }]
       ],
-      inject: isDev, // dev 环境下的 样式是入住到 js 中的，其他环境不会注入
-      extract: false // 无论是 dev 还是其他环境这个配置项都不做 样式的抽离
+      plugins: [autoprefixer, cssnano],
+      minimize: true,
+      // inject: isDev, // dev 环境下的 样式是入住到 js 中的，其他环境不会注入
+      extract: `${dest}/index/style/index.css` // 无论是 dev 还是其他环境这个配置项都不做 样式的抽离
     }),
     terser({
       output: {
