@@ -22,8 +22,7 @@
     "url": "git@igit.58corp.com:huangzz/zufang-components.git"
   },
   "peerDependencies": {
-    "vue": "^2.0.0",
-    "vue-runtime-helpers": "^1.0.0"
+    "vue": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -84,5 +83,8 @@
     "yargs-parser": "^13.1.0"
   },
   "author": "huangzz",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "vue-runtime-helpers": "^1.0.1"
+  }
 }
