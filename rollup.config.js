@@ -77,7 +77,10 @@ const config = {
       include: 'node_modules/**',
       exclude: 'node_modules/process/**'
     }),
-    babel(),
+    babel({
+      exclude: 'node_modules/**',
+      runtimeHelpers: true
+    }),
     postcss({
       include: resolve(__dirname, './src/**'),
       extensions: ['.less', '.css'],

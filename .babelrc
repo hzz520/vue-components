@@ -10,6 +10,16 @@
         //     "camel2DashComponentName": false,
         //     "style": true 
         // }],
+        [
+            "@babel/plugin-transform-runtime",
+            {
+                "absoluteRuntime": false,
+                "corejs": false,
+                "helpers": true,
+                "regenerator": true,
+                "useESModules": false
+            }
+        ],
         // "@babel/plugin-external-helpers",
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-syntax-import-meta",
