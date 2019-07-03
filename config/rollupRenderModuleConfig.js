@@ -60,7 +60,7 @@ const createModuleConfig = (cModuleMap, external, isDev, dest = 'es') => ({
     ...basePlugin
   ],
   // 将模块视为外部模块，不会打包在库中
-  external: id => external,
+  external: external,
   ...(isDev ? {watch: {
     include: 'src/**',
     clearScreen: true

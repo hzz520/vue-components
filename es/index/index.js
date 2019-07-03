@@ -1,1 +1,1 @@
-import t from"../components/ui-button/main";import{toast as o}from"../components/toast/index";export default{install:function(n){n.component(t.name,t),Object.defineProperty(n.prototype,"$toast",{value:o})}};
+import{U as o}from"../vendor.js";import"../vendor2.js";import{toast as t}from"../toast/index.js";import"vue";export default{install:function(e){e.component(o.name,o),Object.defineProperty(e.prototype,"$toast",{value:t})}};

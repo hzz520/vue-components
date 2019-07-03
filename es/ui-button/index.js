@@ -1,1 +1,1 @@
-import t from"../components/ui-button/main";export default{install:function(n){n.component("UiButton",t)}};
+import{U as o}from"../vendor.js";import"../vendor2.js";export default{install:function(t){t.component("UiButton",o)}};
