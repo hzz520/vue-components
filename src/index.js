@@ -1,8 +1,8 @@
-import UiButton from './components/ui-button/index'
-import toast from './components/toast/index'
+import Button from './components/button/index'
+import Toast from './components/toast/index'
 
 const components = [
-    UiButton
+    Button
 ]
 
 export default {
@@ -12,6 +12,6 @@ export default {
         })
         Object.defineProperty(Vue.prototype, '$toast', { value: toast })
     },
-    UiButton,
-    toast
+    Button,
+    Toast
 }
