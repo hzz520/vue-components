@@ -74,8 +74,8 @@ export const toast = {
   }
 }
 
-export default {
-    install: (Vue) => {
-        Object.defineProperty(Vue.prototype, '$toast', { value: toast })
-    }
+toast.install =  (Vue) => {
+    Object.defineProperty(Vue.prototype, '$toast', { value: toast })
 }
+
+export default toast
