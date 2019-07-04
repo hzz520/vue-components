@@ -1,1 +1,1 @@
-import{U as o}from"../vendor.js";import"../vendor2.js";export default{install:function(t){t.component("UiButton",o)}};
+import{_ as t}from"../vendor.js";var n=t({render:function(){var t=this,n=t.$createElement;return(t._self._c||n)("div",{staticClass:"zf-ui-button",on:{click:function(n){return t.handleclick(n)}}},[t._t("default")],2)},staticRenderFns:[]},void 0,{name:"ui-button",data:function(){return{}},methods:{handleclick:function(t){this.$emit("click",t)}}},void 0,!1,void 0,void 0,void 0);n.install=function(t){t.component("UiButton",n)};export default n;

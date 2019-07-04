@@ -1,7 +1,7 @@
 import UiButton  from './main'
 
-export default {
-    install: (Vue) => {
-        Vue.component('UiButton', UiButton)
-    }
+UiButton.install = (Vue) => {
+    Vue.component('UiButton', UiButton)
 }
+
+export default UiButton
