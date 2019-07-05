@@ -9,6 +9,9 @@
     "es",
     "dist"
   ],
+  "bin": {
+    "zf-ui": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "cross-env NODE_ENV=development rollup -c ./rollup.config.js --watch ",
@@ -22,8 +25,7 @@
     "url": "git@igit.58corp.com:huangzz/zufang-components.git"
   },
   "peerDependencies": {
-    "vue": "^2.0.0",
-    "vue-runtime-helpers": "^1.0.0"
+    "vue": "^2.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -56,8 +58,11 @@
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
     "fs": "0.0.1-security",
+    "fs-extra": "^8.1.0",
+    "inquirer": "^6.4.1",
     "less": "^3.9.0",
     "npm-run-all": "^4.1.5",
+    "ora": "^3.4.0",
     "path": "^0.12.7",
     "postcss": "^7.0.17",
     "postcss-cssnext": "^3.1.0",
@@ -84,6 +89,7 @@
     "rollup-plugin-vue2": "^0.8.0",
     "rollup-watch": "^4.3.1",
     "vue-template-compiler": "^2.6.10",
+    "yargs": "^13.2.4",
     "yargs-parser": "^13.1.0"
   },
   "author": "huangzz",

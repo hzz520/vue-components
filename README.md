@@ -1,10 +1,12 @@
 ### 命令行
 * 安装依赖
-  * npm i -g npm-install-peers
   * npm i
-  * npm-install-peers
 * 安装peerDependencies
   * npm i -g npm-install-peer && npm-install-peer
+* 开启本地命令行（将命令行映射到系统命令中）
+  * npm link
+* 创建新的组件
+  * zf-ui cr -n [组件名]
 * 开启服务
   * npm run dev -- --name|-n [模块名] --port|-p [页面端口号] --reloadport|r [livereload端口号] 
 * 产品打包 

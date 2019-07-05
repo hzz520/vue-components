@@ -1,4 +1,4 @@
-.ui-toast-container {
+.zf-ui-toast-container {
     position: fixed;
     z-index: 999;
     left: 50%;
@@ -12,11 +12,13 @@
     text-align: center;
     font-size: 28px;
 
-    &-info-show {
+    &-info-show,
+    &-loading-show {
         animation: show 0.3s ease forwards;
     }
 
-    &-info-hide {
+    &-info-hide,
+    &-loading-hide {
         animation: hide 0.3s ease forwards;
     }
 
@@ -31,7 +33,7 @@
         align-items: center;
     }
 
-    .ui-icon-loading {
+    .zf-ui-icon-loading {
         animation: roll 1.5s linear infinite;
         transform-origin: center center;
         width: 55px;
@@ -43,7 +45,7 @@
     }
 }
 
-.ui-toast-mask {
+.zf-ui-toast-mask {
     position: fixed;
     left: 0;
     right: 0;

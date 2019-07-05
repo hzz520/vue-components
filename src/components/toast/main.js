@@ -1,6 +1,9 @@
 import './main.less'
+import cls from '../../mixins/cls' 
 
 export default {
+    name: 'ui-toast',
+    mixins: [cls],
     data () {
         return {
         }

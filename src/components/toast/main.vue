@@ -1,8 +1,8 @@
 <template>
-    <div class="ui-toast-component">
-        <div class="ui-toast-mask" v-if='hasMask'></div>
-        <div :class="['ui-toast-container', show ? `ui-toast-container-${type}-show` : `ui-toast-container-${type}-hide` ]">
-            <div v-if='hasIcon' :class="['icon', hasIcon && !icon ? 'ui-icon-' + type : '']"></div>
+    <div :class="[`${prefixCls}-toast-component`]">
+        <div :class="[`${prefixCls}-toast-mask`]" v-if='hasMask'></div>
+        <div :class="[`${prefixCls}-toast-container`, show ? `${prefixCls}-toast-container-${type}-show` : `zf-ui-toast-container-${type}-hide` ]">
+            <div v-if='hasIcon' :class="['icon', hasIcon && !icon ? `${prefixCls}-icon-` + type : '']"></div>
             {{content}}
         </div>
     </div>

@@ -1,6 +1,7 @@
 <template>
-    <div>
-        <ui-button @click="handleclick">toast</ui-button>
+    <div class="example">
+        <ui-button @click="handleclick('toast')">toast</ui-button>
+        <ui-button @click="handleclick('loading')">loading</ui-button>
     </div>
 </template>
 

@@ -9,7 +9,7 @@ const notice = (type, content, duration = 2000, hasMask, onClose, hasIcon = fals
   if (showToast) {
     return false
   } else if (!toastVm) {
-    Vue.component('toast', tpl)
+    // Vue.component(tpl.name, tpl)
     let ToastTpl = Vue.extend({
       render (h) {
         let props = {
@@ -19,7 +19,10 @@ const notice = (type, content, duration = 2000, hasMask, onClose, hasIcon = fals
           hasMask,
           show: this.show
         }
-        return h('toast', { props })
+        return h(tpl.name, { props })
+      },
+      components: {
+        [tpl.name]: tpl
       },
       data () {
         return {
@@ -34,6 +37,23 @@ const notice = (type, content, duration = 2000, hasMask, onClose, hasIcon = fals
 
     toastVm.show = showToast = true
 
+    toastVm.close = function () {
+        try {
+            showToast = toastVm.show = false
+            let {
+                $el: e
+            } = toastVm
+            setTimeout(() => {
+                document.body.removeChild(e)
+                setTimeout(() => {
+                    toastVm = null
+                }, 200)
+            }, 300)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     if (type !== 'loading') {
       setTimeout(() => {
         toastVm.show = showToast = false
@@ -46,28 +66,13 @@ const notice = (type, content, duration = 2000, hasMask, onClose, hasIcon = fals
         }, 300)
       }, duration)
     }
+    return toastVm
   }
 }
 
-export const toast = {
+const toast = {
   loading (content = '加载中...', duration, hasMask = true, onClose, hasIcon = true) {
-    notice('loading', content, duration, hasMask, onClose, hasIcon)
-  },
-  async hideloading () {
-    try {
-      showToast = false
-      let {
-        $el: e
-      } = toastVm
-      setTimeout(() => {
-        document.body.removeChild(e)
-        setTimeout(() => {
-          toastVm = null
-        }, 200)
-      }, 300)
-    } catch (error) {
-      console.log(error)
-    }
+    return notice('loading', content, duration, hasMask, onClose, hasIcon)
   },
   info (content, duration = 2000, hasMask = true, onClose, hasIcon) {
     notice('info', content, duration, hasMask, onClose, hasIcon)
