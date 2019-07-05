@@ -51,6 +51,6 @@
 
     new Vue({
     el: '#app',
-    render: (h) => h(IndexView)
+        render: (h) => h(IndexView)
     })
 ```
