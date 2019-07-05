@@ -45,8 +45,8 @@
     import ZfUi from 'zf-ui'
     Vue.use(ZfUi)
     // 按需引入
-    import { UiButton } from 'zf-ui'
-    Vue.use(UiButton)
+    import { Button } from 'zf-ui'
+    Vue.use(Button)
     ...
 
     new Vue({
