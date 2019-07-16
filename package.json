@@ -7,7 +7,8 @@
   "files": [
     "lib",
     "es",
-    "dist"
+    "dist",
+    "bin"
   ],
   "bin": {
     "zf-ui": "./bin/index.js"
