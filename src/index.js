@@ -1,7 +1,6 @@
-import Button from './components/button'
-import Toast from './components/toast'
-import PopUp from './components/popup'
-import toast from './components/toast';
+import Button from './components/button/index'
+import Toast from './components/toast/index'
+import PopUp from './components/popup/index'
 
 const components = [
     Button
