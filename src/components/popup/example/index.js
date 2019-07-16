@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import IndexView from './main.vue'
 
-import popup from '../index'
-import button from '../../button'
+import {
+    Button,
+    PopUp
+} from '../../../index'
 
-Vue.use(popup)
-Vue.use(button)
+Vue.use(PopUp)
+Vue.use(Button)
 
 new Vue({
     el: '#root',
