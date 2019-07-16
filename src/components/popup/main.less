@@ -1,0 +1,74 @@
+@duration: .35s;
+@delay: .05s;
+@bgStart: rgba(0, 0, 0, 0);
+@bgEnd: rgba(0, 0, 0, 0.3);
+@zIndexH: 99;
+@zIndexL: -1;
+
+.zf-ui-popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: @bgStart;
+  z-index: 999;
+  overflow: hidden;
+
+  &-show {
+    animation: zf-ui-popup-fade @duration @delay ease both; 
+  }
+
+  &-hide {
+    animation: zf-ui-popup-fade-out @duration @delay ease-out both; 
+  }
+
+  .zf-ui-popup-content {
+    &-show {
+      animation: zf-ui-popup-show @duration @delay ease both;
+    }
+    &-hide {
+      animation: zf-ui-popup-hide @duration @delay ease-out both;
+    }
+  }
+}
+
+@keyframes zf-ui-popup-fade-out {
+    0% {
+        background: @bgEnd;
+        z-index: @zIndexH;
+    }
+    100% {
+        background: @bgStart;
+        z-index: @zIndexL;
+    }
+}
+
+@keyframes zf-ui-popup-fade {
+    0% {
+        background: @bgStart;
+        z-index: @zIndexL;
+    }
+    100% {
+        background: @bgEnd;
+        z-index: @zIndexH;
+    }
+}
+
+@keyframes zf-ui-popup-show {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes zf-ui-popup-hide {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}

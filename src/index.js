@@ -1,8 +1,14 @@
-import Button from './components/button/index'
-import Toast from './components/toast/index'
+import Button from './components/button'
+import Toast from './components/toast'
+import PopUp from './components/popup'
 
 const components = [
     Button
+]
+
+const plugins = [
+    Toast,
+    PopUp
 ]
 
 export default {
@@ -10,8 +16,10 @@ export default {
         components.forEach(component => {
             Vue.component(component.name, component)
         })
-        Object.defineProperty(Vue.prototype, '$toast', { value: toast })
+        plugins.forEach(plugin => {
+            Vue.use(plugin)
+        })
     },
-    Button,
-    Toast
+    ...components,
+    ...plugins
 }

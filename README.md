@@ -8,8 +8,8 @@
 * 创建新的组件
   * zf-ui cr -n [组件名]
 * 开启服务
-  * npm run dev -- --name|-n [模块名] --port|-p [页面端口号] --reloadport|r [livereload端口号] 
-* 产品打包 
+  * npm run dev -- --name|-n [模块名] --port|-p [页面端口号] --reloadport|r [livereload端口号]
+* 产品打包
   * npm run build
   
 ### 使用

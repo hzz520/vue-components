@@ -14,12 +14,12 @@
 
     &-info-show,
     &-loading-show {
-        animation: show 0.3s ease forwards;
+        animation: zf-ui-toast-show 0.3s ease forwards;
     }
 
     &-info-hide,
     &-loading-hide {
-        animation: hide 0.3s ease forwards;
+        animation: zf-ui-toast-hide 0.3s ease forwards;
     }
 
     &-loading-show,
@@ -34,7 +34,7 @@
     }
 
     .zf-ui-icon-loading {
-        animation: roll 1.5s linear infinite;
+        animation: zf-ui-loading-roll 1.5s linear infinite;
         transform-origin: center center;
         width: 55px;
         height: 55px;
@@ -55,7 +55,7 @@
     z-index: 998;
 }
 
-@keyframes roll {
+@keyframes zf-ui-loading-roll {
     from {
         transform: rotate(0deg);
     }
@@ -65,7 +65,7 @@
     }
 }
 
-@keyframes show {
+@keyframes zf-ui-toast-show {
     from {
         transform: translate(-50%, -50%) scale(0);
     }
@@ -75,7 +75,7 @@
     }
 }
 
-@keyframes hide {
+@keyframes zf-ui-toast-hide {
     from {
         transform: translate(-50%, -50%) scale(1);
     }
