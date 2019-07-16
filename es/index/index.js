@@ -1,1 +1,1 @@
-import"../vendor.js";import t from"../button/index.js";import o from"../toast/index.js";import"vue";var e=[t];export default{install:function(t){e.forEach(function(o){t.component(o.name,o)}),Object.defineProperty(t.prototype,"$toast",{value:toast})},Button:t,Toast:o};
+import"../vendor.js";import{_ as o,P as t}from"../vendor2.js";import"../vendor3.js";import n from"../button/index.js";import"vue";import r from"../toast/index.js";var i=[n],e=[r,t];export default o({install:function(o){i.forEach(function(t){o.component(t.name,t)}),e.forEach(function(t){o.use(t)})}},i,e);
