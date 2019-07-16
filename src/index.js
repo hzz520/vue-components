@@ -2,21 +2,23 @@ import Button from './components/button'
 import Toast from './components/toast'
 import PopUp from './components/popup'
 
-const components = [
+const components = {
     Button
-]
+}
 
-const plugins = [
+const plugins = {
     Toast,
     PopUp
-]
+}
 
 export default {
     install: (Vue) => {
-        components.forEach(component => {
+        Object.keys(components).forEach(key => {
+            let component = components[key]
             Vue.component(component.name, component)
         })
-        plugins.forEach(plugin => {
+        Object.keys(plugins).forEach(key => {
+            let plugin = plugins[key]
             Vue.use(plugin)
         })
     },
