@@ -13,7 +13,7 @@ const createStyleConfig = (moduleName, external, dest) => ({
   },
   plugins: [
     clear({
-      targets: [`${dest}`]
+      targets: [`garbage-${dest}`]
     }),
     // css 处理，暂时没有加插件
     postcss({
