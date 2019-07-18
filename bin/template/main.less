@@ -1,76 +1,7 @@
 @import '../style/theme.less';
 
 .zf-ui {
-    &-button {
-        width: 100%;
-        box-sizing: border-box;
-        height: 90px;
-        color: @black-3;
-        border: 1px solid @info-color;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &-primary,
-        &-info,
-        &-error,
-        &-warning,
-        &-success {
-            color: @white;
-        }
-
-        &-primary&-ghost,
-        &-info&-ghost,
-        &-error&-ghost,
-        &-warning&-ghost,
-        &-success&-ghost {
-            background: transparent;
-        }
-
-        &-primary {
-            background: @primary-color;
-            border-color: @primary-color;
-        }
-
-        &-primary&-ghost {
-            color:  @primary-color;
-        }
-
-        &-info {
-            background: @info-color;
-            border-color: @info-color;
-        }
-
-        &-info&-ghost {
-            color:  @info-color;
-        }
-
-        &-error {
-            background: @error-color;
-            border-color: @error-color;
-        }
-
-        &-error&-ghost {
-            color:  @error-color;
-        }
-
-        &-warning {
-            background: @warning-color;
-            border-color: @warning-color;
-        }
-
-        &-warning&-ghost {
-            color:  @warning-color;
-        }
-
-        &-success {
-            background: @success-color;
-            border-color: @success-color;
-        }
-
-        &-success&-ghost {
-            color:  @success-color;
-        }
+    &-<%= name %> {
+        
     }
 }

@@ -1,22 +1,17 @@
-import Button from './components/button/index'
-import Toast from './components/toast/index'
-import PopUp from './components/popup/index'
+export { default as Button } from './components/button/index'
+export { default as Toast } from './components/toast/index'
+export { default as Popup } from './components/popup/index'
 
-const components = [
-    Button
+const plugins = [
+    Button,
+    Toast,
+    Popup
 ]
 
 export default {
     install: (Vue) => {
-        components.forEach(component => {
-            Vue.component(component.name, component)
+        plugins.forEach(plugin => {
+            Vue.use(plugin)
         })
-        // Vue.use(Toast)
-        // Vue.use(PopUp)
-        Object.defineProperty(Vue.prototype, '$toast', { value: Toast })
-        Object.defineProperty(Vue.prototype, '$popup', { value: PopUp.install })
-    },
-    Button,
-    Toast,
-    PopUp
+    }
 }

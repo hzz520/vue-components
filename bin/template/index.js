@@ -1,7 +1,26 @@
-import Button  from './main'
+<%if (type == 'component') {%>
+import <%= upperName %>  from './main'
 
-Button.install = (Vue) => {
-    Vue.component(Button.name, Button)
+<%= upperName %>.install = (Vue) => {
+    Vue.component(<%= upperName %>.name, <%= upperName %>)
 }
-
-export default Button
+<%}else if (type == 'plugin') {%>
+import MainIndex from './main'
+const <%= upperName %> = {}
+<%= upperName %>.install = (Vue) => {
+    Object.defineProperty(Vue.prototype, '$<%= name %>', { value: <%= upperName %> })
+}
+<%}else {%>
+import MainIndex from './main'
+const <%= upperName %> = {}
+<%= upperName %>.install = (Vue) => {
+    Vue.directive('zf-<%= name %>', {
+        bind: () => {},
+        inserted: () => {},
+        update: () => {},
+        componentUpdated: () => {},
+        unbind: () => {}
+    })
+}
+<%}%>
+export default <%= upperName %>

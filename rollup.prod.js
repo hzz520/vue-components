@@ -20,11 +20,7 @@ export default {
   input: resolve(__dirname, `./src/index.js`),
   output: {
     format: 'cjs',
-    file: 'dist/index.js',
-    globals: {
-      React: 'React',
-      ReactDOM: 'ReactDOM'
-    }
+    file: 'dist/index.js'
   },
   plugins: [
     clear({

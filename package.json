@@ -15,11 +15,12 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cross-env NODE_ENV=development rollup -c ./rollup.config.js --watch ",
+    "start": "zf-ui dev",
+    "dev": "cross-env NODE_ENV=development rollup -c ./rollup.config.js --watch",
     "build:es": "cross-env NODE_ENV=production DEST=es rollup -c ./rollup.module.js",
     "build:cjs": "cross-env NODE_ENV=production DEST=lib rollup -c ./rollup.module.js",
     "build:dist": "cross-env NODE_ENV=production rollup -c ./rollup.prod.js",
-    "build": "npm-run-all --parallel build:es build:cjs build:dist"
+    "build": "zf-ui bd"
   },
   "repository": {
     "type": "git",
@@ -58,11 +59,15 @@
     "chokidar": "^3.0.1",
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
+    "ejs": "^2.6.2",
+    "glob": "^7.1.4",
+    "http": "0.0.0",
     "less": "^3.9.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^7.0.17",
     "postcss-cssnext": "^3.1.0",
     "postcss-px-to-viewport": "^1.1.0",
+    "rimraf": "^2.6.3",
     "rollup": "^1.4.1",
     "rollup-plugin-alias": "^1.5.2",
     "rollup-plugin-babel": "^4.3.2",
@@ -84,10 +89,9 @@
     "rollup-plugin-vue": "^5.0.1",
     "rollup-plugin-vue2": "^0.8.0",
     "rollup-watch": "^4.3.1",
+    "shelljs": "^0.8.3",
     "vue-template-compiler": "^2.6.10",
-    "yargs-parser": "^13.1.0"
-  },
-  "dependencies": {
+    "yargs-parser": "^13.1.0",
     "ora": "^3.4.0",
     "path": "^0.12.7",
     "fs": "0.0.1-security",

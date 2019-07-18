@@ -8,9 +8,13 @@
 * 创建新的组件
   * zf-ui cr -n [组件名]
 * 开启服务
-  * npm run dev -- --name|-n [模块名] --port|-p [页面端口号] --reloadport|r [livereload端口号]
+  * (zf-ui dev | npm start --) --name|-n [模块名] --port|-p [页面端口号] --reloadport|r [livereload端口号]
 * 产品打包
-  * npm run build
+  * zf-ui build
+
+# 规则
+* 组件名驼峰 (DeMo)
+* 组件对应文件夹名 (de-mo)
   
 ### 使用
 * package.json

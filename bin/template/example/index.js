@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import IndexView from './main.vue'
 
-import button from '../index'
-import toast from '../../toast/index'
+import {
+    <%= upperName %>
+} from '../../../index'
 
-Vue.use(button)
-Vue.use(toast)
+Vue.use(<%= upperName %>)
 
 new Vue({
     el: '#root',

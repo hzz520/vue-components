@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import IndexView from './main.vue'
 
-import button from '../index'
-import toast from '../../toast/index'
+import {
+    Button,
+    Toast
+} from '../../../index'
 
-Vue.use(button)
-Vue.use(toast)
+Vue.use(Button)
+Vue.use(Toast)
 
 new Vue({
     el: '#root',

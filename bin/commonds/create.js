@@ -2,9 +2,10 @@ const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
 const ora = require('ora')
-const {
-    copySync
-} = require('fs-extra')
+const glob = require('glob')
+const ejs = require('ejs')
+
+const writeFile = require('../utils/writeFile')
 
 exports.command = ['create', 'cr']
 exports.description = '创建新组件'
@@ -21,13 +22,18 @@ exports.builder = (yargs) => {
             describe: '组件根路径',
             default: 'cwd'
         })
+        .option('type', {
+            alias: ['t'],
+            describe: '组件类型',
+            choices: ['component', 'directive', 'plugin']
+        })
 }
 
 exports.handler = async (argv) => {
-    // console.log(argv)
     let {
         name,
-        cwd
+        cwd,
+        type
     } = argv
     let selObj = {
         name: {
@@ -36,6 +42,9 @@ exports.handler = async (argv) => {
             message: '请输入组件名称(/^[a-zA-Z]{1,}\d{0,}/)',
             default: name,
             validate: (val) => {
+                val = val.replace(/([A-Z])/g, ($0, $1) => {
+                    return (val.indexOf($1) ? '-' : '') + $1.toLowerCase()
+                })
                 if (fs.existsSync(path.resolve(process.cwd(), cwd === 'cwd' ? './' : cwd, './src/components', val))) {
                     return '组件名已存在，请重新输入'
                 }
@@ -56,10 +65,35 @@ exports.handler = async (argv) => {
                 }
                 return '请输入正确的路径'
             },
+        },
+        type: {
+            name: 'type',
+            type: 'list',
+            message: '请选择组件类型',
+            default: 'component',
+            choices: [
+                {
+                    name: '插件',
+                    value: 'plugin'
+                },
+                {
+                    name: '指令',
+                    value: 'directive'
+                },
+                {
+                    name: '组件',
+                    value: 'component'
+                }
+            ]
         }
     } 
+    let answers = {}
     let selArr = []
-    // console.log(888)
+    let comName = name
+    let upperName = comName.replace(/(^[a-z])/, ($0) => $0.toUpperCase())
+    name = (answers.name || name).replace(/([A-Z])/g, ($0, $1) => {
+        return (name.indexOf($1) ? '-' : '') + $1.toLowerCase()
+    })
     if (!fs.existsSync(path.resolve(process.cwd(), cwd === 'cwd' ? './' : cwd, './src/components'))) {
         selArr.push(selObj.cwd)
     }
@@ -67,14 +101,49 @@ exports.handler = async (argv) => {
     if (fs.existsSync(path.resolve(process.cwd(), cwd === 'cwd' ? './' : cwd, './src/components', name))) {
         selArr.push(selObj.name)
     }
-    let answers = {}
+    if (!type) {
+        selArr.push(selObj.type)
+    }
+
     if (selArr.length) {
         answers = await inquirer.prompt(selArr)
     }
-    name = answers.name || name
+    
+    type = answers.type || type
     cwd = answers.cwd || cwd
     cwd = path.resolve(process.cwd(), cwd === 'cwd' ? './' : cwd, './src/components')
+    let comType = type === 'plugin' ? '插件' : type === 'component' ? '组件' : '指令'
     
-    copySync(path.resolve(__dirname, '../template'), path.resolve(cwd, name))
+    let spiner = ora(comType + '模版构建中').start()
+    setTimeout(async () => {
+        // 拷贝模版文件
+        let temp = path.resolve(__dirname, '../template')
+        let files = glob.sync('**/*.*(js|less|vue)', { cwd: temp })
 
+        await Promise.all(files.map(async pathname => {
+            await writeFile(path.resolve(temp, pathname), path.resolve(cwd, name, pathname), (data) => {
+                return ejs.render(data, {
+                    name: comName,
+                    upperName,
+                    type
+                })
+            })
+        }))
+        let indexPath = path.resolve(__dirname, '../../src/index.js')
+        let data = fs.readFileSync(indexPath, 'utf-8')
+
+        data = data.replace(/(\s{0,}\nconst\s{1,}plugins)/, ($0) => {
+            return `\nexport { default as ${upperName} } from './components/${comName}/index'` + $0
+        })
+
+        data = data.replace(/((\s{0,}\nconst\s{1,}plugins\s{1,}\=\s{1,}\[\s{0,}\n)([\n\s\S]{0,})([a-zA-Z0-9\,\s\n]{0,})(\]))/, ($0, $1, $2, $3, $4, $5) => {
+            return $2 +  $3.replace(/(\s{0,}\n$)/, ',') + `\n    ${upperName}\n` + $5
+        })
+       
+        data = Buffer.from(data, 'utf-8')
+
+        fs.writeFileSync(indexPath, data)
+
+        spiner.succeed(comType + '构建成功')
+    }, 500)
 }

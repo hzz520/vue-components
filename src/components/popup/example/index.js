@@ -3,10 +3,10 @@ import IndexView from './main.vue'
 
 import {
     Button,
-    PopUp
+    Popup
 } from '../../../index'
 
-Vue.use(PopUp)
+Vue.use(Popup)
 Vue.use(Button)
 
 new Vue({
