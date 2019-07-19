@@ -1,6 +1,6 @@
-export { default as Button } from './components/button/index'
-export { default as Toast } from './components/toast/index'
-export { default as Popup } from './components/popup/index'
+export { default as Button } from './components/button'
+export { default as Toast } from './components/toast'
+export { default as Popup } from './components/popup'
 
 const plugins = [
     Button,

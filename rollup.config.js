@@ -14,7 +14,6 @@ const serve = require('rollup-plugin-serve')
 const replace = require('rollup-plugin-replace')
 const livereload = require('rollup-plugin-livereload')
 const chalk = require('chalk')
-const { exec } = require('shelljs')
 const argv = require('yargs-parser')(process.argv.slice(2), { 
   alias: { 
     'name': ['n'],
@@ -23,8 +22,6 @@ const argv = require('yargs-parser')(process.argv.slice(2), {
   }
   // array: ['watch', 'w']
 })
-
-exec('npm-install-peers')
 
 const env = process.env.NODE_ENV
 let { 

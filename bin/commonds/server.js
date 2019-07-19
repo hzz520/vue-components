@@ -5,6 +5,8 @@ const {
     exec
 } = require('shelljs')
 
+const pkg = require('../../package.json')
+
 const dirNames = fs.readdirSync(path.resolve(__dirname, '../../src/components')).filter(filename => !['style'].includes(filename))
 const pushObj = (argv, Obj) => {
     let arr = []
@@ -15,6 +17,7 @@ const pushObj = (argv, Obj) => {
     })
     return arr
 }
+
 
 exports.command = ['devServer', 'dev', 'start']
 exports.description = '开启服务'
@@ -68,7 +71,13 @@ exports.handler = async (argv) => {
     let port = argv.port || answers.port
     let report = argv.report || answers.report
 
-    let binStr = `cross-env NODE_ENV=development rollup -c ./rollup.config.js -w -n ${name} -p ${port} -r ${report}`
+    let key = Object.keys(pkg.peerDependencies)[0]
+
+    if (!fs.existsSync(path.resolve(__dirname, '../../node_modules', key))) {
+        exec('npm-install-peers')
+    }
+
+    let binStr = `cross-env NODE_ENV=development node ./rollup.start.js -n ${name} -p ${port} -r ${report}`
 
     console.log(binStr)
     exec(binStr)
