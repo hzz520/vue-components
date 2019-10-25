@@ -154,7 +154,10 @@ exports.handler = async (argv) => {
     cwd = answers.cwd || cwd
     cwd = path.resolve(process.cwd(), cwd === 'cwd' ? './' : cwd, './src/components')
     let comName = name
-    let upperName = (comName || '').replace(/(^[a-z])/, ($0) => $0.toUpperCase())
+    let upperName = (comName || '').replace(/(^[a-z])/, ($0) => $0.toUpperCase()).replace(/((-)([a-z]))/, ($0, $1, $2, $3) => {
+        return $3.toUpperCase()
+    })
+
     let comType = type === 'plugin' ? '插件' : type === 'component' ? '组件' : '指令'
     
     let spiner = ora(comType + '模版构建中').start()

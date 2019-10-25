@@ -9,7 +9,7 @@ const { resolve } = require('path')
 const replace = require('rollup-plugin-replace')
 const pkg = require('./package.json')
 const vuePlugin = require('rollup-plugin-vue')
-const css = require('rollup-plugin-css-only')
+// const css = require('rollup-plugin-css-only')
 const { terser } = require('rollup-plugin-terser')
 
 const external = Object.keys(pkg.peerDependencies)

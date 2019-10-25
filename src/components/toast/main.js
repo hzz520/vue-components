@@ -3,6 +3,7 @@ import cls from '../../mixins/cls'
 
 export default {
     name: 'ui-toast',
+    componentName: 'ui-toast',
     mixins: [cls],
     data () {
         return {

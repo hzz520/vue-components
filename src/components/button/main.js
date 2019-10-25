@@ -3,6 +3,7 @@ import './main.less'
 
 export default {
     name: 'ui-button',
+    componentName: 'ui-button',
     mixins: [cls],
     data () {
         return {}

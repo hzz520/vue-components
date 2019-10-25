@@ -3,6 +3,7 @@ import './main.less'
 
 export default {
     name: 'ui-popup',
+    componentName: 'ui-popup',
     mixins: [cls],
     data () {
         return {}

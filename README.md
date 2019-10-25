@@ -19,7 +19,7 @@
 ```
     "dependencies": {
         ...,
-        "zf-ui": "git+http://igit.58corp.com/fangfe/zf-components.git#publish/1.0.0.0"
+        "zf-ui": "git+https://github.com/hzz520/node-server.git"
     }
 ``` 
 * .babelrc
